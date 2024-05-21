@@ -10,7 +10,7 @@ const app = express();
 const __dirname = dirname(fileURLToPath(import.meta.url)); 
 
 /* -------------------------setting (configurar servidor y de el manejador de plantillas,asignando puerto)-------------------------------- */
-app.set('port',process.env.PORT || 3000)
+app.set('port',process.env.PORT || 4000)
 app.set('views', join(__dirname,'views'));
 app.engine('.hbs',engine({
     defaultLayout: 'main',
@@ -30,7 +30,7 @@ app.use(express.json())
 
 /* --------------------------------- routes (crear rutas necesarias para el proyecto--------------------------------- */
 app.get('/', (req,res) => {
-    res.json({"message": "hola mundo"})
+    res.render('index')
 
 });
 
