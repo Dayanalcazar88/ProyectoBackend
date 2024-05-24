@@ -48,5 +48,35 @@ router.get('/delete/:id', async (req, res) => {
     }
 });
 
+/* -------------- configuracion que traiga los datos aactualizados ------------- */
+router.get('/edit/:id', async (req, res)=>{
+    try {
+        const {id} = req.params
+        const [persona] = await pool.query('SELECT * FROM persona WHERE id = ?', [id]);
+        const personaEdit = persona[0]
+        res.render('personas/edit', { persona: personaEdit })
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
+
 export default router;
 
+/* ---------------- configuracion para la base de datos edit ---------------- */
+router.post('/edit/:id', async (req, res)=>{
+    try {
+        const {id} = req.params
+        const{name,last_name,age} =req.body
+        const editpersona ={
+                                name,
+                                last_name,
+                                age
+                            }
+
+        await pool.query('update persona set ?  WHERE id = ?', [editpersona,id]);
+        res.redirect('/list');
+
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
