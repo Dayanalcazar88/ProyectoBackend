@@ -8,7 +8,7 @@
                 </div>
                 <div class="card-body">
 
-                    <form action="/add" method="post">
+                    <form action="/add" method="post"enctype="multipart/form-data">
                     <div class="input-group mt-2">
                             <label for="name" class="input-group-text"> <b>Nombre Persona </b></label>
                             <input class="form-control" type="text" name="name" id="name" placeholder="Ejemplo: dayana alcazar" autofocus required >
@@ -22,7 +22,14 @@
                         <div class="input-group mt-2">
                             <label for="age" class="input-group-text"> <b>age Persona </b></label>
                             <input class="form-control" type="number" name="age" id="age" placeholder="0" autofocus required>
-                        </div>               
+                        </div>              
+
+                                <!--agregar img--->
+                            <div class="input-group mt-2">
+                                <input class="form-control" type="file" name="file" id="file">
+                            </div>
+
+
                     <!---crear boton azul de crear persona-->
                     <div class="form-group mt-4 d-grid gap-2">
                             <button class="btn btn-success"> Crear </button>
