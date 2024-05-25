@@ -77,7 +77,7 @@ router.get('/edit/:id', async (req, res) => {
 });
 
 /* ---------------- configuracion para la base de datos edit ---------------- */
-router.post('/edit/:id', async (req, res) => {
+router.post('/edit/:id', upload.single('file'), async (req, res) => {
     try {
         const { id } = req.params
         const { name, last_name, age,  } = req.body
@@ -88,6 +88,7 @@ router.post('/edit/:id', async (req, res) => {
             const imagen_original = file.originalname
             const imagen = file.filename
             editPersona= {name, last_name, age, imagen}
+            
         }else{
             editPersona= {name, last_name, age, }
         }
